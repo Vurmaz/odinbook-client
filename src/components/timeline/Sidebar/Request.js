@@ -6,12 +6,11 @@ import Grid from '@mui/material/Grid'
 import CheckIcon from '@mui/icons-material/Check';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { alpha, styled } from '@mui/material/styles';
-import { useNavigate } from "react-router-dom"
 import Tooltip from '@mui/material/Tooltip';
+import Link from "@mui/material/Link";
+import { Link as RouterLink }  from "react-router-dom";
 
-export default function Request({ friend, acceptRequest, rejectFriendsRequest }) {
-
-    const navigate = useNavigate()
+export default function Request({ friend, acceptRequest, rejectFriendsRequest }) {    
     
     return(
         <>
@@ -27,30 +26,45 @@ export default function Request({ friend, acceptRequest, rejectFriendsRequest })
                     }}
                 >
                     <Grid item xs={2.5}>
-                        <Avatar 
-                            src={friend.profilePhoto}   
-                            sx={{
-                                cursor:'pointer',
-                                '&:hover':{
-                                    scale:'1.2'
-                                },
-                                transition:'scale 300ms ease'                                
-                            }}
-                        />
+                        <Link
+                            component={RouterLink}
+                            to={`/profile/${friend._id}`}
+                        >
+                            <Avatar 
+                                src={friend.profilePhoto}   
+                                sx={{
+                                    cursor:'pointer',
+                                    '&:hover':{
+                                        scale:'1.2'
+                                    },
+                                    transition:'scale 300ms ease'                                
+                                }}
+                            />                            
+                        </Link>
+
                     </Grid>
                     <Grid item xs={6}>
-                        <Typography 
-                            variant='p'
-                            onClick={()=>navigate(`/profile/${friend._id}`)}
+                        <Link
+                            component={RouterLink}
+                            to={`/profile/${friend._id}`}
                             sx={{
-                                cursor:'pointer',
-                                '&:hover':{
-                                    textDecoration:'underline'
-                                }
-                            }}
+                                color:'black',
+                                textDecoration:'none'
+                            }}                            
                         >
-                            {friend.username}
-                        </Typography>  
+                            <Typography 
+                                variant='p'                                
+                                sx={{
+                                    cursor:'pointer',
+                                    '&:hover':{
+                                        textDecoration:'underline'
+                                    }
+                                }}
+                            >
+                                {friend.username}
+                            </Typography>                              
+                        </Link>
+
                     </Grid>
                     <Grid item xs={3.5} sx={{display:'flex', gap:'0.1rem'}}>
                         <Tooltip title='ACCEPT'>

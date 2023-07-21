@@ -1,25 +1,6 @@
 body {
   background: linear-gradient(0.25turn, #d7c1e0, #d7c1e0);
 }
-.facebook-btn {
-  margin-inline: auto;
-  display: flex;
-  align-items: center;
-  font-family: Helvetica, sans-serif;
-  font-weight: 700;
-  -webkit-font-smoothing: antialiased;
-  color: #fff;
-  cursor: pointer;
-  gap: 0.5rem;
-  font-size: calc(0.27548vw + 12.71074px);
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: background-color 0.3s, border-color 0.3s;
-  background-color: #4c69ba;
-  border: calc(0.06887vw + 0.67769px) solid #4c69ba;
-  padding: calc(0.34435vw + 13.38843px) calc(0.34435vw + 18.38843px);
-}
-
 .fadeAnimation {
   animation: FadeAnimation 1s ease-in-out;
 }
@@ -61,6 +42,11 @@ body {
 }
 .fade {
   animation: Fade 2s ease-in-out;
+}
+
+.post-img{
+  max-height: 712px;
+  max-width: 100%;
 }
 
 @keyframes FadeAnimation {

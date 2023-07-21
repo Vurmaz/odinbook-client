@@ -18,6 +18,8 @@ import { getComments, isPostLikedFunc, useLikePost, useDeletePost, getUserAvatar
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { getCookie } from "../../api"
 import { styled } from '@mui/material/styles';
+import Link from "@mui/material/Link";
+import { Link as RouterLink }  from "react-router-dom";
 
 export default function Post({ post }) {
     
@@ -110,33 +112,45 @@ export default function Post({ post }) {
                             marginTop:'0.5rem'
                         }}
                     >
-                        <Avatar  
-                            src={post.authorPhoto}
-                            onClick={()=>navigate(`/profile/${post.author._id}`)}
-                            sx={{ 
-                                width:45, 
-                                height:45, 
-                                marginLeft:'0.3rem',
-                                cursor:'pointer',
-                                '&:hover':{
-                                    scale:'1.2'
-                                },
-                                transition:'scale 300ms ease'
-                            }}                            
-                        >                            
-                        </Avatar>
-                        <Typography 
-                            variant="h4"
-                            onClick={()=>navigate(`/profile/${post.author._id}`)}
+                        <Link
+                            component={RouterLink}
+                            to={`/profile/${post.author._id}`}
+                        >
+                            <Avatar  
+                                src={post.authorPhoto}                                
+                                sx={{ 
+                                    width:45, 
+                                    height:45, 
+                                    marginLeft:'0.3rem',
+                                    cursor:'pointer',
+                                    '&:hover':{
+                                        scale:'1.2'
+                                    },
+                                    transition:'scale 300ms ease'
+                                }}                            
+                            >                            
+                            </Avatar>                            
+                        </Link>
+                        <Link
+                            component={RouterLink}
+                            to={`/profile/${post.author._id}`}
                             sx={{
-                                cursor:'pointer',
-                                '&:hover':{
-                                    textDecoration:'underline'
-                                }
+                                textDecoration:'none'
                             }}
                         >
-                            {post?.author?.username}
-                        </Typography>
+                            <Typography 
+                                variant="h4"                                
+                                sx={{
+                                    cursor:'pointer',
+                                    '&:hover':{
+                                        textDecoration:'underline'
+                                    }
+                                }}
+                            >
+                                {post?.author?.username}
+                            </Typography>                            
+                        </Link>
+
                         <Typography variant="caption">{formatDistanceToNowStrict(new Date(post.createdAt))+' ago'}</Typography>
                     </Grid>
                     <Grid item xs={12} sx={{ padding:'1rem' }}>
@@ -154,8 +168,8 @@ export default function Post({ post }) {
                             <img
                                 src={post.image} 
                                 height={post.image ? 'auto' : 0 } 
-                                width='100%' 
-                                className='pointer' 
+                                                                
+                                className='pointer post-img' 
                                 onClick={()=>navigate(`/image/${post._id}`)}    
                                 loading='lazy'  
                                 alt='post'                                                 

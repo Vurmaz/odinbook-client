@@ -12,6 +12,8 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import SmallScreenMenu from "./SmallScreenMenu";
 import LoggedIn from "./LoggedIn";
 import { useNavigate } from "react-router-dom";
+import Link from "@mui/material/Link";
+import { Link as RouterLink }  from "react-router-dom";
 
 export default function Header() {
     
@@ -53,15 +55,20 @@ export default function Header() {
                                             cursor:'pointer'
                                         }}                                    
                                     />
-                                    <Typography 
+                                    <Link 
                                         textAlign={isScreenSmall ? 'center' : 'none'} 
                                         variant={isScreenSmall ? 'h5' : 'h4'}
-                                        onClick={() => navigate('/timeline')}
+                                        component={RouterLink}                                        
+                                        to='/timeline'
                                         sx={{
-                                            cursor:'pointer'
+                                            cursor:'pointer',
+                                            color:'white',
+                                            '&:hover':{
+                                                textDecoration:'none'
+                                            }
                                         }}
                                     >   ODINBOOK
-                                    </Typography>
+                                    </Link>
                                 </Box> 
                             </Grid>
                             <Grid 

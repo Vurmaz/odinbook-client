@@ -127,8 +127,7 @@ export default function Friends() {
                 <ReccomendedFriends 
                     reccomends={reccomends?.data?.data?.users} 
                     btn1Action={sendRequest} 
-                    btn2Action={navigateProfile}
-                    usernameAction={navigateProfile}
+                    btn2Action={navigateProfile}                    
                     isReccomendsLoading={reccomends?.isLoading}
                 /> 
                 <MyFriends 

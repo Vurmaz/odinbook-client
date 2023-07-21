@@ -8,6 +8,7 @@ import SimpleSnackbar from '../../Snackbar'
 import { getReccomends, useSendRequest } from './apiCalls'
 import { useQuery } from 'react-query'
 
+
 export default function FriendReccomend({ openSnackbar, snackbarMessage, clickSnackbar, closeSnackbar }) {
     
     const people = useQuery('people', getReccomends)

@@ -8,6 +8,8 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { theme } from '../../assets/theme'
 import { useNavigate } from "react-router-dom"
 import { getCookie } from "../../api";
+import Link from "@mui/material/Link";
+import { Link as RouterLink }  from "react-router-dom";
 
 export default function SmallScreenMenu({ isMenuOpen, logout }) {
     
@@ -33,22 +35,7 @@ export default function SmallScreenMenu({ isMenuOpen, logout }) {
                         <Grid 
                             item
                             xs={3}
-                            onClick={()=>navigate('/timeline')}
-                            sx={{
-                                display:'flex',
-                                flexDirection:'column',
-                                justifyContent:'center',
-                                alignItems:'center'
-                            }}
                             
-                        >
-                            <HomeIcon />
-                            <Typography>Home</Typography>
-                        </Grid>
-                        <Grid
-                            item 
-                            xs={3}
-                            onClick={()=>navigate(`/friends/${getCookie(' u')}`)}
                             sx={{
                                 display:'flex',
                                 flexDirection:'column',
@@ -56,13 +43,28 @@ export default function SmallScreenMenu({ isMenuOpen, logout }) {
                                 alignItems:'center'
                             }}                            
                         >
-                            <PeopleIcon />
-                            <Typography>Friends</Typography>
+                            <Link
+                                component={RouterLink} 
+                                to='/timeline'                            
+                                sx={{ 
+                                    display:'flex',
+                                    flexDirection:'column',
+                                    justifyContent:'center',
+                                    alignItems:'center', 
+                                    color:'white',
+                                    '&:hover':{
+                                        textDecoration:'none'
+                                    }                                
+                                }}                             
+                            >
+                                <HomeIcon />
+                                <Typography>Home</Typography>                                
+                            </Link>
+
                         </Grid>
                         <Grid
                             item 
-                            xs={3}
-                            onClick={()=>navigate('/profile')}
+                            xs={3}                            
                             sx={{
                                 display:'flex',
                                 flexDirection:'column',
@@ -70,8 +72,53 @@ export default function SmallScreenMenu({ isMenuOpen, logout }) {
                                 alignItems:'center'
                             }}                            
                         >
-                            <AccountBoxIcon />
-                            <Typography>Profile</Typography>
+                            <Link
+                                component={RouterLink} 
+                                to={`/friends/${getCookie(' u')}`}                           
+                                sx={{ 
+                                    display:'flex',
+                                    flexDirection:'column',
+                                    justifyContent:'center',
+                                    alignItems:'center', 
+                                    color:'white',
+                                    '&:hover':{
+                                        textDecoration:'none'
+                                    }                                
+                                }}                            
+                            >
+                                <PeopleIcon />
+                                <Typography>Friends</Typography>                                
+                            </Link>
+
+                        </Grid>
+                        <Grid
+                            item 
+                            xs={3}                            
+                            sx={{
+                                display:'flex',
+                                flexDirection:'column',
+                                justifyContent:'center',
+                                alignItems:'center'
+                            }}                            
+                        >
+                            <Link
+                                component={RouterLink} 
+                                to='/profile'                          
+                                sx={{ 
+                                    display:'flex',
+                                    flexDirection:'column',
+                                    justifyContent:'center',
+                                    alignItems:'center', 
+                                    color:'white',
+                                    '&:hover':{
+                                        textDecoration:'none'
+                                    }                                
+                                }}                            
+                            >
+                                <AccountBoxIcon />
+                                <Typography>Profile</Typography>                                
+                            </Link>
+
                         </Grid>
                         <Grid
                             item 

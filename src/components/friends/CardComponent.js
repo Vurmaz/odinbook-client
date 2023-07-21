@@ -5,10 +5,12 @@ import Card from '@mui/material/Card';
 import Box from '@mui/material/Box'
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
+import Link from "@mui/material/Link";
+import { Link as RouterLink }  from "react-router-dom";
 
-export default function CardComponent({ data, btn1, btn1Action, btn2, btn2Action, usernameAction }) {
-
+export default function CardComponent({ data, btn1, btn1Action, btn2, btn2Action }) {
+    
     return(
         <>
             <Grid   
@@ -35,28 +37,35 @@ export default function CardComponent({ data, btn1, btn1Action, btn2, btn2Action
                     }}              
                 >
                 <Box >
-
-                
-                    <CardContent 
-                        
+                    <CardContent                         
                         sx={{ 
                             justifyContent:'center',
                         }}
                     >
-                        <Typography 
-                            textAlign='center' 
-                            variant='h5'
-                            onClick={usernameAction}
+                        <Link
+                            component={RouterLink}
+                            to={`/profile/${data._id}`}
                             sx={{
-                                transition:'all 700ms ease-in-out',
-                                '&:hover':{
-                                    textDecoration:'underline',
-                                    cursor:'pointer',
-                                }
+                                color:'black',
+                                textDecoration:'none'
                             }}
-                        > 
-                            {data.username}
-                        </Typography>
+                        >
+                            <Typography 
+                                textAlign='center' 
+                                variant='h5'
+                                
+                                sx={{
+                                    transition:'all 700ms ease-in-out',
+                                    '&:hover':{
+                                        textDecoration:'underline',
+                                        cursor:'pointer',
+                                    }
+                                }}
+                            > 
+                                {data.username}
+                            </Typography>                            
+                        </Link>
+
                     </CardContent>
                     <CardMedia 
                         component='img'
@@ -65,43 +74,82 @@ export default function CardComponent({ data, btn1, btn1Action, btn2, btn2Action
                         height='250px'
                         sx={{
                             width:'256px',
-                            transition:'all 700ms ease',                            
-                            
+                            transition:'all 700ms ease',                                                        
                         }}
                     />
                 </Box>
- 
                     <CardContent 
                         sx={{                             
                             justifyContent:'center',
                             flexDirection:'column',
                             gap:'0.5rem',
-                            display:'flex',
-                                                     
+                            display:'flex',                                                     
                         }}                        
-                    >
-                        
-                        <Button 
-                            variant="contained"
-                            color="secondary"
-                            onClick={btn1Action}
-                            sx={{
-                                color:'white',
-                            }}
-                            
-                        >   
-                            {btn1}
-                        </Button>
-                        <Button 
-                            variant="contained"
-                            color="secondary"
-                            onClick={btn2Action}
-                            sx={{
-                                color:'white',
-                            }}
-                        >   
-                            {btn2}
-                        </Button>                                                                                 
+                    >                    
+   
+                            {
+                                btn1 !== 'visit'
+                                ? 
+                                <Button 
+                                    variant="contained"
+                                    color="secondary"
+                                    onClick={btn1 == 'visit' ? () => null  : btn1Action}
+                                    sx={{
+                                        color:'white',
+                                    }}                            
+                                >                                 
+                                    {btn1}
+                                </Button>                                
+                                :     
+                                    <Link 
+                                        component={RouterLink}
+                                        to={`/profile/${data._id}`}
+                                        sx={{
+                                            color:'white',
+                                        }}                                        
+                                    >    
+                                        <Button 
+                                            variant="contained"
+                                            color="secondary"
+                                            onClick={btn1 == 'visit' ? () => null  : btn1Action}
+                                            fullWidth
+                                    
+                                        >                                                                                            
+                                            {btn1}
+                                        </Button> 
+                                    </Link>                                
+                            }
+                            {
+                                btn2 !== 'Visit'
+                                ? 
+                                <Button 
+                                    variant="contained"
+                                    color="secondary"
+                                    onClick={btn2 == 'Visit' ? () => null  : btn2Action}
+                                    sx={{
+                                        color:'white',
+                                    }}                            
+                                >                                 
+                                    {btn2}
+                                </Button>                                
+                                :     
+                                    <Link 
+                                        component={RouterLink}
+                                        to={`/profile/${data._id}`}
+                                        sx={{
+                                            color:'white',
+                                        }}                                        
+                                    >    
+                                        <Button 
+                                            variant="contained"
+                                            color="secondary"
+                                            onClick={btn2 == 'Visit' ? () => null  : btn2Action}
+                                            fullWidth                                    
+                                        >                                                                                            
+                                            {btn2}
+                                        </Button> 
+                                    </Link>                                
+                            }                                                                               
                     </CardContent>                    
                 </Card>
             </Grid>               

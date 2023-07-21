@@ -11,7 +11,8 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useNavigate } from "react-router-dom"
 import { getCookie } from "../../api";
-
+import Link from "@mui/material/Link";
+import { Link as RouterLink }  from "react-router-dom";
 
 export default function LoggedIn({ isScreenSmall, isMenuOpen, setIsMenuOpen, logout }) {
 
@@ -61,46 +62,73 @@ export default function LoggedIn({ isScreenSmall, isMenuOpen, setIsMenuOpen, log
                     <Grid 
                         item 
                         xs={2.5} 
-                        onClick={()=>navigate('/timeline')}
-                        sx={{ 
-                            cursor:'pointer', 
-                            display:'flex', 
-                            alignItems:'center', 
-                            gap:'0.2rem' 
-                        }}
                     >
-                        <HomeIcon />
-                        <Typography variant={isScreenBiggerThan1100px ? 'p' : 'caption'}>HOME</Typography>
+                        <Link 
+                            component={RouterLink} 
+                            to='/timeline'                            
+                            sx={{ 
+                                cursor:'pointer', 
+                                display:'flex', 
+                                alignItems:'center', 
+                                gap:'0.2rem',
+                                color:'white',
+                                '&:hover':{
+                                    textDecoration:'none'
+                                }                                
+                            }}                            
+                        >
+                            <HomeIcon />
+                            <Typography variant={isScreenBiggerThan1100px ? 'p' : 'caption'}>HOME</Typography>                            
+                        </Link>
+
                     </Grid>
                     {/* Item 2 */}
                     <Grid 
                         item 
                         xs={2.5} 
-                        onClick={()=>navigate(`/friends/${getCookie(' u')}`)}
-                        sx={{ 
-                            cursor:'pointer', 
-                            display:'flex', 
-                            alignItems:'center', 
-                            gap:'0.2rem', 
-                        }}
                     >
-                        <PeopleIcon />
-                        <Typography variant={isScreenBiggerThan1100px ? 'p' : 'caption'}>FRIENDS</Typography>
+                        <Link
+                            component={RouterLink} 
+                            to={`/friends/${getCookie(' u')}`}                          
+                            sx={{ 
+                                cursor:'pointer', 
+                                display:'flex', 
+                                alignItems:'center', 
+                                gap:'0.2rem',
+                                color:'white',
+                                '&:hover':{
+                                    textDecoration:'none'
+                                }                                
+                            }}                            
+                        >
+                            <PeopleIcon />
+                            <Typography variant={isScreenBiggerThan1100px ? 'p' : 'caption'}>FRIENDS</Typography>                            
+                        </Link>
+
                     </Grid>  
                     {/* Item 3 */}   
                     <Grid 
                         item 
-                        xs={2.5} 
-                        onClick={()=>navigate(`/profile/${getCookie(' u')}`)}
-                        sx={{ 
-                            cursor:'pointer', 
-                            display:'flex', 
-                            alignItems:'center', 
-                            gap:'0.2rem' 
-                        }}
+                        xs={2.5}                         
                     >
-                        <AccountBoxIcon />
-                        <Typography variant={isScreenBiggerThan1100px ? 'p' : 'caption'}>PROFILE</Typography>
+                        <Link
+                            component={RouterLink} 
+                            to={`/profile/${getCookie(' u')}`}                          
+                            sx={{ 
+                                cursor:'pointer', 
+                                display:'flex', 
+                                alignItems:'center', 
+                                gap:'0.2rem',
+                                color:'white',
+                                '&:hover':{
+                                    textDecoration:'none'
+                                }                                
+                            }}                         
+                        >
+                            <AccountBoxIcon />
+                            <Typography variant={isScreenBiggerThan1100px ? 'p' : 'caption'}>PROFILE</Typography>                            
+                        </Link>
+
                     </Grid> 
                     {/* Item 4 */}
                     <Grid 

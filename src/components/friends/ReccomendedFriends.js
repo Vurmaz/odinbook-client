@@ -6,7 +6,7 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
-export default function ReccomendedFriends({ reccomends, btn1Action, btn2Action, usernameAction, isReccomendsLoading }) {
+export default function ReccomendedFriends({ reccomends, btn1Action, btn2Action, isReccomendsLoading }) {
     
     return(
         <>
@@ -48,8 +48,7 @@ export default function ReccomendedFriends({ reccomends, btn1Action, btn2Action,
                                 btn1='Send request'
                                 btn1Action={() => btn1Action(reccomend)}                 
                                 btn2='Visit'
-                                btn2Action={() => btn2Action(reccomend)}
-                                usernameAction={()=>usernameAction(reccomend)}
+                                btn2Action={() => btn2Action(reccomend)}                                
                             />                    
                         )
                     })                

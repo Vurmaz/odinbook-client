@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { getReccomends, useSendRequest } from './apiCalls'
 import { theme } from '../../../assets/theme'
+import Link from "@mui/material/Link";
+import { Link as RouterLink }  from "react-router-dom";
 
 
 export default function SmallScreenReccomends() {
@@ -84,30 +86,43 @@ export default function SmallScreenReccomends() {
                                             gap:'.5rem'  
                                         }}
                                     >
-                                        <Avatar 
-                                            src={person.profilePhoto} 
-                                            onClick={()=>navigate(`/profile/${person._id}`)}
-                                            sx={{ 
-                                                width:75, 
-                                                height:75,
-                                                cursor:'pointer',
-                                                '&:hover':{
-                                                    scale:'1.2'
-                                                },
-                                                transition:'scale 300ms ease'                                         
-                                            }}                                         
-                                        />
-                                        <Typography 
-                                            onClick={()=>navigate(`/profile/${person._id}`)}
+                                        <Link
+                                            component={RouterLink}
+                                            to={`/profile/${person._id}`}
+                                        >
+                                            <Avatar 
+                                                src={person.profilePhoto}                                                 
+                                                sx={{ 
+                                                    width:75, 
+                                                    height:75,
+                                                    cursor:'pointer',
+                                                    '&:hover':{
+                                                        scale:'1.2'
+                                                    },
+                                                    transition:'scale 300ms ease'                                         
+                                                }}                                         
+                                            />                                            
+                                        </Link>
+                                        <Link
+                                            component={RouterLink}
+                                            to={`/profile/${person._id}`}
                                             sx={{
-                                                cursor:'pointer',
-                                                '&:hover':{
-                                                    textDecoration:'underline'
-                                                }
+                                                color:'black',
+                                                'textDecoration':'none'
                                             }}
                                         >
-                                            {person.username}
-                                        </Typography>
+                                            <Typography                                                 
+                                                sx={{
+                                                    cursor:'pointer',
+                                                    '&:hover':{
+                                                        textDecoration:'underline'
+                                                    }
+                                                }}
+                                            >
+                                                {person.username}
+                                            </Typography>                                            
+                                        </Link>
+
                                         <Button
                                             onClick={() => sendRequest(person._id)}
                                         >

@@ -37,7 +37,8 @@ export default function Posts() {
                 marginTop:'1rem',
                 marginBottom:'2rem',
                 overflowY:'auto',
-                height:'auto'
+                height:'auto',
+                overflowX:'hidden'
             }}
         >
             {
@@ -52,7 +53,7 @@ export default function Posts() {
                 :           
                 data?.pages?.length > 0
                 ? 
-                <>
+                <Box>
                     {
                         data?.pages?.map((group, index) => {
                             return <Fragment key={index}>
@@ -80,7 +81,7 @@ export default function Posts() {
                     >
                         Your Friends Haven't Posted Anything
                     </Typography>                    
-                </>   
+                </Box>   
                 :
                 <Box
                     sx={{

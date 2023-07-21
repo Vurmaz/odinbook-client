@@ -6,6 +6,8 @@ import Button from '@mui/material/Button'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useNavigate } from "react-router-dom"
 import Tooltip from '@mui/material/Tooltip';
+import Link from "@mui/material/Link";
+import { Link as RouterLink }  from "react-router-dom";
 
 export default function Reccomend({ person, sendRequest }) {
 
@@ -27,34 +29,47 @@ export default function Reccomend({ person, sendRequest }) {
                 }}
             >
                 <Grid item xs={3}>
-                    <Avatar 
-                        src={person.profilePhoto} 
-                        onClick={()=>navigate(`/profile/${person._id}`)}
-                        sx={{ 
-                            width:50, 
-                            height:50,
-                            cursor:'pointer',
-                            '&:hover':{
-                                scale:'1.2'
-                            },
-                            transition:'scale 300ms ease'
-                        }}
-                    />
+                    <Link
+                        component={RouterLink}
+                        to={`/profile/${person._id}`}
+                    >
+                        <Avatar 
+                            src={person.profilePhoto}                             
+                            sx={{ 
+                                width:50, 
+                                height:50,
+                                cursor:'pointer',
+                                '&:hover':{
+                                    scale:'1.2'
+                                },
+                                transition:'scale 300ms ease'
+                            }}
+                        />                        
+                    </Link>
                 </Grid>
                 <Grid item xs={5}>
-                    <Typography 
-                        variant='p'
-                        onClick={()=>navigate(`/profile/${person._id}`)}
+                    <Link
+                        component={RouterLink}
+                        to={`/profile/${person._id}`}
                         sx={{
-                            cursor:'pointer',
-                            '&:hover':{
-                                textDecoration:'underline'
-                            },
-                            transition:'all 300ms ease'
+                            color:'black',
+                            textDecoration:'none'
                         }}
                     >
-                        {person.username}
-                    </Typography>
+                        <Typography 
+                            variant='p'                            
+                            sx={{
+                                cursor:'pointer',
+                                '&:hover':{
+                                    textDecoration:'underline'
+                                },
+                                transition:'all 300ms ease'
+                            }}
+                        >
+                            {person.username}
+                        </Typography>                        
+                    </Link>
+
                 </Grid>
                 <Grid item xs={3}>
                     <Tooltip title='SEND REQUEST'>

@@ -11,14 +11,15 @@ import { useQuery } from "react-query"
 import { getAllFriends } from "./apiCalls"
 import { getCookie } from '../../api'
 import { useDeleteFriend } from '../friends/apiCalls'
-
+import Link from "@mui/material/Link";
+import { Link as RouterLink }  from "react-router-dom";
 
 
 export default function ProfileFriends({ params }) {
     const loadingArray = [0, 1, 2]
-    
-    const navigateProfile = (data) => {
-        window.location.href = `https://localhost:3000/profile/${data._id}`
+        
+    const navigateProfile = async () => {        
+        setTimeout(() => window.location.reload(), 300)
     }
 
     const allFriends = useQuery('allFriends', () => getAllFriends(params))
@@ -26,9 +27,8 @@ export default function ProfileFriends({ params }) {
     const { mutate : deleteAFriend } = useDeleteFriend()
 
     const deleteFriend = async(data) =>{
-        await deleteAFriend(data)
+        deleteAFriend(data)
     }
-    
     
     return(
         <>  
@@ -50,7 +50,8 @@ export default function ProfileFriends({ params }) {
                                 <Box key={item} sx={{ display:'flex', flexDirection:'row', marginLeft:'2rem', gap:'0.5rem' }}>
                                     <Skeleton variant="circular" sx={{ width:45, height:45, marginInline:'auto' }} />
                                     <Skeleton variant="text" sx={{ fontSize: '1rem', width:'15rem' }} />
-                                </Box>                        )
+                                </Box>
+                            )
                         })                        
                     }                                                      
                 </Box>
@@ -60,6 +61,7 @@ export default function ProfileFriends({ params }) {
                 <Typography marginLeft={4} variant='h6'>You have 0 friends</Typography>
                 :
                 allFriends?.data?.data?.friends?.map((friend) => {
+                    
                     return(
                         <Grid 
                             item 
@@ -78,19 +80,26 @@ export default function ProfileFriends({ params }) {
                                     marginLeft:'1rem',                                   
                                 }}
                             >
-                                <Avatar 
-                                    src={friend.profilePhoto}
-                                    onClick={()=> navigateProfile(friend)}
-                                    sx={{ 
-                                        width:60, 
-                                        height:60,
-                                        cursor:'pointer',
-                                        '&:hover':{
-                                            scale:'1.2'
-                                        },
-                                        transition:'scale 300ms ease'
-                                    }}                                    
-                                />
+                                <Link
+                                    component={RouterLink}                                     
+                                    to={`/profile/${friend._id}`}
+                                                                     
+                                >
+                                    <Avatar 
+                                        src={friend.profilePhoto}  
+                                        onClick={()=>navigateProfile()}                                                                        
+                                        sx={{ 
+                                            width:60, 
+                                            height:60,
+                                            cursor:'pointer',
+                                            '&:hover':{
+                                                scale:'1.2'
+                                            },
+                                            transition:'scale 300ms ease'
+                                        }}                                    
+                                    >                    
+                                    </Avatar>  
+                                </Link>          
                             </Grid>
                             <Grid 
                                 item 
@@ -100,18 +109,27 @@ export default function ProfileFriends({ params }) {
                                     alignItems:'center'
                                 }}
                             >
-                                <Typography 
-                                    variant="h6"
-                                    onClick={()=> navigateProfile(friend)}
-                                    sx={{ 
-                                        cursor:'pointer',
-                                        '&:hover':{
-                                            textDecoration:'underline'
-                                        },                                        
-                                    }}                                    
+                                <Link
+                                    component={RouterLink}
+                                    to={`/profile/${friend._id}`}
+                                    sx={{
+                                        textDecoration:'none'
+                                    }}
                                 >
-                                    {friend.username}
-                                </Typography>
+                                    <Typography 
+                                        variant="h6" 
+                                        onClick={()=>navigateProfile()}                                     
+                                        sx={{ 
+                                            cursor:'pointer',
+                                            '&:hover':{
+                                                textDecoration:'underline'
+                                            },                                        
+                                        }}                                    
+                                    >
+                                        {friend.username}
+                                    </Typography>                                    
+                                </Link>
+
                             </Grid>
                             {
                                 getCookie(' u') === params.id
