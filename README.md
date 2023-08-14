@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Odinbook Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+Welcome to the Odinbook Frontend Project! Odinbook is a social media platform designed to showcase my front-end development skills while creating a user-friendly and engaging interface. Inspired by popular social networking sites, this project aims to demonstrate my ability to design and implement dynamic web applications using modern web technologies.
 
-In the project directory, you can run:
+## Project Highlights
 
-### `npm start`
+🌐 Connect and Interact: Odinbook allows users to create profiles, connect with friends, share posts, like and comment on content, and experience the essence of a social network.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🎨 Design Consistency: Design aesthetics are key. I've strived to maintain visual consistency throughout the platform, incorporating intuitive navigation and modern UI components.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+📱 Responsive and Adaptive: Odinbook adapts seamlessly to different screen sizes, ensuring a consistent and pleasant user experience on various devices, from desktops to smartphones.
 
-### `npm test`
+🚀 Dynamic Components: From news feeds and user profiles to interactive posts and real-time notifications, the project showcases a variety of dynamic and interactive components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🛠️ Modern Stack: Built with modern front-end tools such as React, and CSS-in-JS libraries, the project emphasizes maintainability and scalability.
 
-### `npm run build`
+## Created with
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React, Material UI, React Query
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Screenshot
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Uygulama Ekran Görüntüsü](https://www.linkpicture.com/q/Odinbook.webp)
 
-### `npm run eject`
+## Demo
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://odinbook-client.vercel.app/login
